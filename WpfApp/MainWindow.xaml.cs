@@ -28,6 +28,15 @@ namespace WpfApp
             Accounts.CollectionChanged += Accounts_CollectionChanged;
         }
 
+        private int _launchDelayMs = 2500;
+
+        private void DelaySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            _launchDelayMs = (int)e.NewValue;
+            DelayValueText.Text = _launchDelayMs.ToString();
+        }
+
+
         private void LoadAccounts()
         {
             if (File.Exists(AccountsFilePath))
@@ -101,7 +110,7 @@ namespace WpfApp
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = "AutoLogin.exe",
-                        Arguments = $" \"{wowPath}\" {account.Username} {account.Password} 2500",
+                        Arguments = $" \"{wowPath}\" {account.Username} {account.Password} {_launchDelayMs}",
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
                         UseShellExecute = false,

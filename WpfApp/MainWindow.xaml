@@ -17,6 +17,12 @@
             <Label>Enter the whole path to Wow.exe</Label>
             <TextBox x:Name="WowPath" Width="200" Margin="0 0 5 0" />
         </StackPanel>
+        <StackPanel DockPanel.Dock="Top" Orientation="Vertical" Margin="0 0 0 10">
+            <Label>Delay (ms):</Label>
+            <TextBlock x:Name="DelayValueText" Text="2500" />
+            <Slider x:Name="DelaySlider" Minimum="0" Maximum="30000" Value="5000" TickFrequency="1000"
+                IsSnapToTickEnabled="True" Width="350" ValueChanged="DelaySlider_ValueChanged"/>
+        </StackPanel>
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 10">
             <Label>Username</Label>
             <TextBox x:Name="UsernameTextBox" Width="100" Margin="0 0 5 0" />
